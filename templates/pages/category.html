@@ -1,0 +1,120 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{inject "categoryId" category.id}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+<style>
+    .categ-body .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+</style>
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if category.image}}
+    {{> components/common/responsive-img
+        image=category.image
+        fallback_size=theme_settings.zoom_size
+        lazyload=theme_settings.lazyload_mode
+        class="category-header-image"
+    }}
+{{/if}}
+{{#unless theme_settings.hide_category_page_heading }}
+    <h1 class="page-heading">{{category.name}}</h1>
+    {{{region name="category_below_header"}}}
+{{/unless}}
+{{{category.description}}}
+<div class="page" style="max-width: 85%; margin: 0 auto;">
+    {{#if category.faceted_search_enabled}}
+        <aside class="page-sidebar" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if category.subcategories}}
+        <aside class="page-sidebar" id="faceted-search-container">
+            {{> components/category/sidebar}}
+        </aside>
+    {{else if category.shop_by_price}}
+        {{#if theme_settings.shop_by_price_visibility}}
+             <aside class="page-sidebar" id="faceted-search-container">
+                {{> components/category/sidebar}}
+            </aside>
+
+
+
+        {{/if}}
+    {{/if}}
+
+    <main class="page-content" id="product-listing-container">
+
+        {{> components/category/product-listing}}
+        {{{region name="category_below_content"}}}
+    </main>
+
+</div>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+    // $(document).ready(function(){
+    //     $('.sidebarBlock.price .navList li a').each(function(){
+    //         console.log($(this).html());
+    //         $('#selectPrice option').html($(this).html());
+    //     });
+        
+    // });
+
+    // $('.sidebarBlock.price .navList li').each(function(i, items_list){
+    //     var myText = "";
+
+    //     $(items_list).find('li').each(function(j, li){
+    //         console.log(li.text());
+    //     })
+
+    //    console.log(myText);
+
+    // });
+
+    var listItems = $(".sidebarBlock.price .navList").find("li");
+    var ind, len, product;
+
+    for ( ind = 0, len = listItems.length; ind < len; ind++ ) {
+        product = $(listItems[ind]);
+
+        console.log(product.html());
+        // $('#selectPrice').append("<option>"+product.html()+"</option>")
+        // ...
+    }
+
+
+    $('ul.selectdropdown').each(function(){
+        var list=$(this),
+            select=$(document.createElement('select')).insertBefore($(this).hide()).change(function(){
+        window.location.href=$(this).val();
+        });
+        $('>li a', this).each(function(){
+        var option=$(document.createElement('option'))
+        .appendTo(select)
+        .val(this.href)
+        .html($(this).html());
+        if($(this).attr('class') === 'selected'){
+            option.attr('selected','selected');
+        }
+        });
+        list.remove();
+        });
+</script>
+

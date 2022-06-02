@@ -1,0 +1,80 @@
+---
+    carousel: {{theme_settings.homepage_show_carousel}}
+---
+
+    {{#if page.title '==' 'Get In Touch'}}
+
+            {{#partial "hero"}}
+                {{{region name="home_below_menu"}}}
+                {{#and carousel carousel.slides.length}}
+                    {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows play_pause_button=theme_settings.homepage_show_carousel_play_pause_button}}
+                {{/and}}
+                {{{region name="home_below_carousel"}}}
+            {{/partial}}
+
+    {{/if}}
+
+{{#partial "page"}}
+{{#if page.title '==' 'Get In Touch'}}
+    {{#if forms.contact.success}}
+        <style>
+            div#contact-us-success {
+                margin: 5rem 0;
+                text-align: center;
+            }
+            section.heroCarousel.mt-2.mb-2 {
+                display: none;
+            }
+            .body {
+                margin-top: 0;
+            }
+        </style>
+    {{/if}}
+{{else}}
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{/if}}
+<main class="page">
+    {{#unless theme_settings.hide_contact_us_page_heading }}
+        <h1 class="page-heading {{#if page.title '==' 'Get In Touch'}}d-none{{/if}}">{{page.title}}</h1>
+    {{/unless}}
+
+    {{#if page.sub_pages}}
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+                {{#each page.sub_pages}}
+                    <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </nav>
+    {{/if}}
+
+    <div id="contact-us-page" class="page-content page-content--centered {{#if page.title '==' 'Get In Touch'}}w-100{{/if}}">
+        {{#if forms.contact.success}}
+                <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+        {{else}}
+        
+            <p>{{{page.content}}}</p>
+            {{#if page.title '==' 'Get In Touch'}}
+            <div class="get-in-bg">
+                <div class="get-intouch">
+                    <div>
+                        <h2>Get in Touch</h2>
+                        <p>Curabitur sapien dui, rutrum id sem et, mollis varius dolor. Suspendisse ac aliquam orci. Proin diam risus, ornare id pellentesque sit amet,</p>
+                    </div>
+                    <div>
+                        {{> components/page/contact-us-form}}
+                    </div>
+                </div>
+            </div>
+            {{else}}
+               {{> components/page/contact-us-form}}
+            {{/if}}
+        {{/if}}
+
+    </div>
+
+</main>
+
+{{/partial}}
+
+{{> layout/base}}
