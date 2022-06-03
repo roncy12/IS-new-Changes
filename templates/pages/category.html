@@ -38,25 +38,12 @@ category:
 {{/unless}}
 {{{category.description}}}
 <div class="page" style="max-width: 85%; margin: 0 auto;">
-    {{#if category.faceted_search_enabled}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if category.subcategories}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if category.shop_by_price}}
-        {{#if theme_settings.shop_by_price_visibility}}
-             <aside class="page-sidebar" id="faceted-search-container">
-                {{> components/category/sidebar}}
-            </aside>
-
-
-
-        {{/if}}
-    {{/if}}
-
+    <div class="care-banner faqs-banner mt-0">
+        <img src="https://cdn11.bigcommerce.com/s-z2qdisybty/product_images/uploaded_images/sheetssub-banner.png">
+       <div class="faqs-abs-content">
+           <h1 style="text-transform: capitalize; font-weight: 600;">Sheets</h1>
+       </div>
+   </div>
     <main class="page-content" id="product-listing-container">
 
         {{> components/category/product-listing}}
@@ -69,41 +56,14 @@ category:
 {{> layout/base}}
 
 <script>
-    // $(document).ready(function(){
-    //     $('.sidebarBlock.price .navList li a').each(function(){
-    //         console.log($(this).html());
-    //         $('#selectPrice option').html($(this).html());
-    //     });
-        
-    // });
-
-    // $('.sidebarBlock.price .navList li').each(function(i, items_list){
-    //     var myText = "";
-
-    //     $(items_list).find('li').each(function(j, li){
-    //         console.log(li.text());
-    //     })
-
-    //    console.log(myText);
-
-    // });
-
-    var listItems = $(".sidebarBlock.price .navList").find("li");
-    var ind, len, product;
-
-    for ( ind = 0, len = listItems.length; ind < len; ind++ ) {
-        product = $(listItems[ind]);
-
-        console.log(product.html());
-        // $('#selectPrice').append("<option>"+product.html()+"</option>")
-        // ...
-    }
-
+    var listItems = $(".productGrid").find("li.product").length;
+    console.log(listItems);
+    $("#gridCount .totalGrid").append(listItems);
 
     $('ul.selectdropdown').each(function(){
         var list=$(this),
-            select=$(document.createElement('select')).insertBefore($(this).hide()).change(function(){
-        window.location.href=$(this).val();
+        select=$(document.createElement('select')).insertBefore($(this).hide()).change(function(){
+            window.location.href=$(this).val();
         });
         $('>li a', this).each(function(){
         var option=$(document.createElement('option'))
@@ -114,7 +74,11 @@ category:
             option.attr('selected','selected');
         }
         });
-        list.remove();
-        });
+       
+    });
+
+
+
+    $(".productGrid")
 </script>
 

@@ -2,7 +2,10 @@
   "customLayouts": {
     "brand": {},
     "category": {
-      "mattresses.html":"/mattresses/"
+      "mattresses.html":"/mattresses/",
+      "toppers.html":"/toppers/",
+      "bases.html":"/bases/",
+      "bedding.html":"/bedding/"
     },
     "page": {
       "affirm--template.html":"/affirm/",

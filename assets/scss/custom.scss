@@ -6034,5 +6034,101 @@ i.fa-solid.fa-chevron-up:before {
 
     &:hover{
         background: #4A72C5;
+        color: #ffffff;
+        text-decoration: none;
     }
+}
+
+div#gridCount p {
+    text-transform: uppercase;
+    color: #132448;
+    font-weight: 800;
+    font-size: 21px;
+    font-family: 'Almarai';
+}
+
+.sorting-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem 0 0;
+}
+
+.sorting-container .secondCon {
+    display: flex;
+    align-items: center;
+    .actionBar-section .form-select{
+        height: 3.1785714286rem;
+        background-position: right 0.5rem top 1rem;
+    }
+    .sidebarBlock-heading{
+        display: none;
+    }
+    div#shopByPrice {
+        margin-left: 1.5rem;
+    }
+}
+
+.secondCon form {
+    margin: 0;
+    .form-field{
+        margin: 0;
+    }
+}
+main#product-listing-container {
+    width: 85%;
+    margin: 1.5rem auto 0;
+    float: unset;
+    .productGrid{
+        margin: 1.5rem -0.75rem 1.5rem;
+    }
+    .card-figcaption-button{
+        padding: 1.2rem;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    .productGrid .product {
+        width: 33%;
+    }
+
+    .card-title {
+        font-size: 22px;
+        margin: 0 0 0.2857142857rem;
+        font-weight: 600;
+        text-align: center;
+        a{
+            color: #132448 !important;
+        }
+
+    }
+    .card-text[data-test-info-type="brandName"] {
+        margin-bottom: 0.2142857143rem;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+    .price-section.price-section--withoutTax {
+        text-align: center;
+        color: #132448 !important;
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+.parallax-section{
+    background: url("https://cdn11.bigcommerce.com/s-z2qdisybty/product_images/uploaded_images/sheets-parallax.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin: 1rem auto 0;
+    color: #fff;
+    position: relative;
+    background-attachment: fixed !important;
+    transform-style: preserve-3d;
+    perspective: 1px;
+    padding: 7rem;
+    text-align: center;
+
+}
+.parallax-section h2 {
+    line-height: 1.5;
+    color: #fff;
 }

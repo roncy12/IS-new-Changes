@@ -1,5 +1,21 @@
 {{#if category.products}}
-    {{> components/products/filter sort=pagination.category.sort}}
+
+    <div class="sorting-container">
+        <div id="gridCount">
+            <p>Showing <span class="totalGrid"></span> Items</p>
+        </div>
+
+        <div class="secondCon">
+            {{> components/products/filter sort=pagination.category.sort}}
+            <div id="shopByPrice">
+                {{#if category.shop_by_price}}
+                    {{#if theme_settings.shop_by_price_visibility}}
+                            {{> components/category/sidebar}}
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>        
+    </div>
 
     <form action="{{urls.compare}}" method='POST' {{#if settings.data_tag_enabled}} data-list-name="Category: {{category.name}}" {{/if}} data-product-compare>
         {{#if theme_settings.product_list_display_mode '===' 'grid'}}
@@ -17,6 +33,8 @@
         {{/if}}
     </form>
 
+
+
     {{> components/common/paginator pagination.category}}
 {{else}}
     {{#if category.search_error}}
@@ -31,5 +49,39 @@
         </p>
     {{/if}}
 {{/if}}
+<div class="parallax-section">
+    <h2>The Very Best in<br/> <b>Comfort and Support</b></h2>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed reprehenderit nulla reiciendis, labore vero iure.
+    </p>
+</div>
 
+<h2>Related Categories</h2>
+<div class="shop-best-seller w-100">
+    <div class="best-sgrid grid-sub">
+        <div class="best-sbox">
+            <a href="/bedding/blankets/" target="_blank" class="p-0 m-0 no-decor"><img src="https://cdn11.bigcommerce.com/s-z2qdisybty/product_images/uploaded_images/related-blankets.png" alt="" class="w-100"></a>
+            <span>Starts at $29.99</span>
+            <div class="category--action">
+                <a href="/bedding/blankets/" target="_blank" class="p-0 m-0 no-decor"><h4>Blankets</h4></a>
+                <a href="/bedding/blankets/" target="_blank" class="grid-action">Shop</a>
+            </div>
 
+        </div>
+        <div class="best-sbox">
+            <a href="/bedding/matress-protector/" target="_blank" class="p-0 m-0 no-decor"><img src="https://cdn11.bigcommerce.com/s-z2qdisybty/product_images/uploaded_images/related-mattress-protector.png" alt="" class="w-100"></a>
+            <span>Starts at $49.99</span>
+            <div class="category--action">
+                <a href="/bedding/matress-protector/" target="_blank" class="p-0 m-0 no-decor"><h4>Mattress Protector</h4></a>
+                <a href="/bedding/matress-protector/" target="_blank" class="grid-action">Shop</a>
+            </div>
+        </div>
+        <div class="best-sbox">
+            <a href="/bedding/sheets/" target="_blank" class="m-0 p-0 no-decor"><img src="https://cdn11.bigcommerce.com/s-z2qdisybty/product_images/uploaded_images/related-sheets.png" alt="" class="w-100"></a>
+            <span>Starts at $79.99</span>
+            <div class="category--action">
+                <a href="/bedding/sheets/" target="_blank" class="p-0 m-0 no-decor"><h4>Sheets</h4></a>
+                <a href="/bedding/sheets/" target="_blank" class="grid-action">Shop</a>
+            </div>
+        </div>
+    </div>
+</div>
