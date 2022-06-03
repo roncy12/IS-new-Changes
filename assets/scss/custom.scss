@@ -6127,8 +6127,19 @@ main#product-listing-container {
     padding: 7rem;
     text-align: center;
 
+    @media screen and (max-width: 1425px) {
+        background-size: contain;
+    }
+
 }
 .parallax-section h2 {
     line-height: 1.5;
     color: #fff;
+}
+h2.category-related {
+    font-size: 28px;
+    font-weight: 600;
+    color: #132448;
+    margin: 3rem 0;
+    text-align: center;
 }
